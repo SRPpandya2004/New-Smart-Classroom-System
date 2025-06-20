@@ -1,0 +1,105 @@
+{% extends "base2.html" %}
+
+{% block title %}Student Login{% endblock %}
+
+{% block extra_css %}
+<style>
+  /* Registration Form Styles */
+  .reg-form h2 {
+    font-size: 2.5rem;
+    color: #2575fc;
+    margin-bottom: 1rem;
+    text-align: left;
+    animation: fadeIn 1s ease-out;
+  }
+  .reg-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-size: 1rem;
+  }
+  .reg-form input,
+  .reg-form select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s ease;
+  }
+  .reg-form input:focus,
+  .reg-form select:focus {
+    border-color: #2575fc;
+    outline: none;
+  }
+  .reg-form button {
+    background: #2575fc;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .reg-form button:hover {
+    background: #1a5bb8;
+    transform: scale(1.03);
+  }
+  .signup-link {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .signup-link a {
+    color: #2575fc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .signup-link a:hover {
+    text-decoration: underline;
+  }
+</style>
+{% endblock %}
+
+{% block left_panel %}
+<h2>Student Login Page</h2>
+{% endblock %}
+
+{% block content %}
+<div class="reg-form">
+  <h2>Signin Your Account</h2>
+  <form id="registrationForm">
+    <div class="form-group">
+      <label for="enrollment">Enrollment Number</label>
+      <input type="text" id="enrollment" placeholder="Enter your enrollment number" required />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required />
+    </div>
+    <button type="submit">Signin</button>
+  </form>
+  <div class="signup-link">
+    <p>Don't have an account? <a href="{% url 'registration' %}">Register Here</a></p>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  document.getElementById("registrationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    // Collect the login data from the form
+    const regData = {
+      enrollment: document.getElementById("enrollment").value,
+      password: document.getElementById("password").value
+    };
+    console.log("Login Data:", regData);
+    alert("Login successful!");
+    // Add further login logic as needed.
+  });
+</script>
+{% endblock %}
